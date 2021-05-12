@@ -1,8 +1,15 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.16.0"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+set :application, 'zero_downtime'
+set :repo_url, 'git@github.com:VitaliyAdamkov/zero-downtime.git'
+
+namespace :deploy do
+  after :published, 'docker:create_network'
+  after :published, 'docker:create_volumes'
+  after :published, 'docker:db_setup'
+  after :published, 'docker:start_container'
+end
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
