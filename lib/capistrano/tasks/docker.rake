@@ -64,13 +64,13 @@ namespace :docker do
           'create',
           '--name zero-downtime-app',
           '--volume app_log:/var/www/app/log',
-          '--publish 3000:3000',
           '--network=backend',
           '--env SECRET_KEY_BASE=b74f9df2edbb986f4da44425ccc6fcc4f23191515fa53dbdc4eebc549610',
           '--env RAILS_ENV=production',
+          '--env VIRTUAL_HOST=app-domain.test',
           'zero-downtime'
         )
-        execute 'docker', 'start', 'zero-downtime-app'
+        execute :docker, 'start', 'zero-downtime-app'
       end
     end
   end
