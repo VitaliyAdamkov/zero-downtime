@@ -27,7 +27,7 @@ namespace :docker do
           execute :docker, 'start', 'nginx'
         else
           # reload nginx
-          execute :docker, 'exec --name nginx nginx -s reload'
+          execute :docker, 'exec nginx nginx -s reload'
         end
       end
     end
