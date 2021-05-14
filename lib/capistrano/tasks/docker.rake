@@ -20,7 +20,7 @@ namespace :docker do
             '--network=backend',
             '--publish 8080:80',
             '--volume /var/run/docker.sock:/tmp/docker.sock:Z',
-            '--volume /var/www/app/nginx.tmpl:/app/nginx.tmpl',
+            '--volume /home/adamkov/www/zero_downtime/current/nginx.tmpl:/app/nginx.tmpl',
             'jwilder/nginx-proxy'
           )
 
