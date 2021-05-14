@@ -20,10 +20,14 @@ namespace :docker do
             '--network=backend',
             '--publish 8080:80',
             '--volume /var/run/docker.sock:/tmp/docker.sock:Z',
+            '--volume /nginx.tmpl:/app/nginx.tmpl'
             'jwilder/nginx-proxy'
           )
 
           execute :docker, 'start', 'nginx'
+        else
+          # reload nginx
+          execute :docker, 'exec --name nginx nginx -s reload'
         end
       end
     end
